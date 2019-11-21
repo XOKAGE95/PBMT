@@ -8,7 +8,7 @@ double acceleration(double v, double x, double y, double ta)
     double r;
     r = x*x + y*y;
     r = sqrt(r);
-    return (v - (z / (r*r*r)*ta));
+    return (v - (x / (r*r*r)*ta));
 }
 
 void draw(double tk, float x, float y, double vx, double vy, double red, double green, double blue)
