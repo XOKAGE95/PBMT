@@ -3,10 +3,10 @@
 #define PI 3.1415926535
 #define dt 0.00005
 
-double acceleration(double v, double z, double l, double ta)
+double acceleration(double v, double x, double y, double ta)
 {
     double r;
-    r = z*z + l*l;
+    r = x*x + y*y;
     r = sqrt(r);
     return (v - (z / (r*r*r)*ta));
 }
