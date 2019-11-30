@@ -32,7 +32,7 @@ double Force (double x, double y)
     double r = 0;
     r = x*x + y*y;
     r = sqrt(r);
-    return (2*k*Z*e*e)/(m*r*r*r);
+    return (2*k*Z*e*e*x)/(m*r*r*r);
 }
 
 void ChangeSize(int w, int h)
@@ -52,8 +52,8 @@ void ChangeSize(int w, int h)
 void CoordinateSystem()
 {
 
-    glLineWidth(1.0);       //Толщина линий
-    glColor3d(1, 1, 1);     //Цвет линий - черный
+    glLineWidth(1.0);       //Г’Г®Г«Г№ГЁГ­Г  Г«ГЁГ­ГЁГ©
+    glColor3d(1, 1, 1);     //Г–ГўГҐГІ Г«ГЁГ­ГЁГ© - Г·ГҐГ°Г­Г»Г©
     glBegin(GL_LINES);
     glVertex3d(-1.4, 0.0, -5.0);
     glVertex3d(1.4, 0.0, -5.0);
@@ -93,7 +93,7 @@ void Circle()
 void RenderCartoon()
 {
     glLoadIdentity();
-    CoordinateSystem(); // Отрисовка координатной системы
+    CoordinateSystem(); // ГЋГІГ°ГЁГ±Г®ГўГЄГ  ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ­Г®Г© Г±ГЁГ±ГІГҐГ¬Г»
     Circle();
     if (!(x < xmax) || !(y < ymax))
         Flag = true;
