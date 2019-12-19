@@ -141,11 +141,8 @@ void display_xyz()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-//glTranslatef(0.0, 0.0, -step);
-//glRotatef(angle, 0, 1, 0);
     look();
     glPushMatrix();
-//glColor3f(0.5, 0.5, 0.5);
     glColor3f(1.0, 0.0, 0.0);
     glBegin(GL_LINES);
     glVertex3d(0.0, 0.0, 0.0);
@@ -162,27 +159,33 @@ void display_xyz()
     glPopMatrix();
     glPushMatrix();
     glColor3f(0.0, 1.0, 0.0);
-//Начальные условия модели 2
+    //Начальные условия модели 2
     double z0 = 0.0;
     double vz = 0.0;
     double alpha = pi / 3;
+    double betta = pi / 3;
     double q = 5;
     double m = 0.05;
     double v = 300;
     double B = 100;
     double R = 0.05;
     double x0 = 0.0, y0 = R;
-    double v0x = v, v0y = 0.0;
+    double v0x, v0y;
     double vx, vy;
     double x, y;
     x = x0;
     y = y0;
-    v0x = v*sin(alpha), v0y = 0.0*sin(alpha);
     vz = v*cos(alpha);
+
+    v0x = v*sin(alpha);
+    v0y = v*sin(alpha);
+
+    v0x = vx*cos(betta);
+    v0y = vy*sin(betta);
+
     vx = v0x - (q*B*v0y / m)*step / 2;
-    vx = vx*sin(alpha);
     vy = v0y - (-q*B*v0x / m)*step / 2;
-    vy = vy*sin(alpha);
+
     double z = z0;
     glBegin(GL_POINTS);
     glVertex3d(x,y,z);
@@ -484,12 +487,12 @@ int main(int argc, char ** argv)
     glutDisplayFunc(display_yz);
     glutReshapeFunc(change_size_yz);
     initialise();
-    glutInitWindowPosition(0, 0);
+    /*glutInitWindowPosition(0, 0);
     glutCreateWindow("Движение заряженной частицы в магнитном поле: скорость составляет с вектором магнитной индукции произвольный угол");
     my_init();
     glutDisplayFunc(display_xyz);
     glutReshapeFunc(change_size_xyz);
-    glutIdleFunc(Rotate);
+    glutIdleFunc(Rotate);*/
     glutMainLoop();
     return 0;
 }
